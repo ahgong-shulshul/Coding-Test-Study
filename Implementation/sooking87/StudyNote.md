@@ -1,6 +1,6 @@
 ## 완전 탐색
 
-컴퓨터의 빠른 계산 성능을 활용하여 가능한 모든 경우의 수를 탐색하는 방법 == *무식하게 푼다* 의 의미인 **Brute Force**  라고도 부름 <br>
+컴퓨터의 빠른 계산 성능을 활용하여 가능한 모든 경우의 수를 탐색하는 방법 == _무식하게 푼다_ 의 의미인 **Brute Force** 라고도 부름 <br>
 문제에서 주어질 수 있는 모든 경우의 수를 탐색하는 알고리즘
 
 ### 완전 탐색 방법
@@ -28,37 +28,37 @@
 ### 알고리즘에서 주로 쓰는 함수
 
 1. product(곱집합) `itertools.product('1234', repeat = 2)` <br>
-    이중 for문 형식으로 생각 <br>
-    ```txt
-    [('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'),
-    ('2', '1'), ('2', '2'), ('2', '3'), ('2', '4'),
-    ('3', '1'), ('3', '2'), ('3', '3'), ('3', '4'),
-    ('4', '1'), ('4', '2'), ('4', '3'), ('4', '4')]
-    ```
+   이중 for문 형식으로 생각 <br>
+   ```txt
+   [('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'),
+   ('2', '1'), ('2', '2'), ('2', '3'), ('2', '4'),
+   ('3', '1'), ('3', '2'), ('3', '3'), ('3', '4'),
+   ('4', '1'), ('4', '2'), ('4', '3'), ('4', '4')]
+   ```
 2. permutations(순열) `itertools.permutations('1234', 2)` <br>
-    가능한 모든 순서를 반환, 반복되는 요소가 없다. <br>
-    위의 예시로는 1234 중 2개를 순서 상관 있이 뽑는 경우의 수. 즉, <small>4</small>P<small>2</small> <br>
-    ```txt
-    [('1', '2'), ('1', '3'), ('1', '4'),
-    ('2', '1'), ('2', '3'), ('2', '4'),
-    ('3', '1'), ('3', '2'), ('3', '4'),
-    ('4', '1'), ('4', '2'), ('4', '3')]
-    ```
+   가능한 모든 순서를 반환, 반복되는 요소가 없다. <br>
+   위의 예시로는 1234 중 2개를 순서 상관 있이 뽑는 경우의 수. 즉, <small>4</small>P<small>2</small> <br>
+   ```txt
+   [('1', '2'), ('1', '3'), ('1', '4'),
+   ('2', '1'), ('2', '3'), ('2', '4'),
+   ('3', '1'), ('3', '2'), ('3', '4'),
+   ('4', '1'), ('4', '2'), ('4', '3')]
+   ```
 3. combinations(조합) `combinations('1234', 2)` <br>
-    <small>4</small>C<small>2</small> <br>
-    ```txt
-    [('1', '2'), ('1', '3'), ('1', '4'),
-    ('2', '3'), ('2', '4'),
-    ('3', '4')]
-    ```
+   <small>4</small>C<small>2</small> <br>
+   ```txt
+   [('1', '2'), ('1', '3'), ('1', '4'),
+   ('2', '3'), ('2', '4'),
+   ('3', '4')]
+   ```
 4. combinations_with_replacement(중복이 가능한 조합) `combinations_with_replacement('1234', 2)` <br>
-    조합에서 개별 요소마다 두 번이상 반복할 수 있다. <br>
-    ```txt
-    [('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'),
-    ('2', '2'), ('2', '3'), ('2', '4'),
-    ('3', '3'), ('3', '4'),
-    ('4', '4')]
-    ```
+   조합에서 개별 요소마다 두 번이상 반복할 수 있다. <br>
+   ```txt
+   [('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'),
+   ('2', '2'), ('2', '3'), ('2', '4'),
+   ('3', '3'), ('3', '4'),
+   ('4', '4')]
+   ```
 
 ## 백준 12933 오리
 
@@ -69,7 +69,7 @@
 예제 1 해석 <br>
 quqacukqauackck <br>
 qu_ac_kq_uack <br>
-__q__u__a____ck <br>
+**q**u**a\_\_**ck <br>
 
 이렇게 되어서 출력이 2가 되는 것이다.
 
@@ -97,7 +97,7 @@ i = 0
 # quack가 끝나기 전에 q가 시작되면 다른 오리의 울음
 
 #* quack 사이에 q의 개수가 리턴 개수?
-while True: 
+while True:
     if len(str_list) == 1: # \n은 제외
         break
     if str_list[i] == duck[duck_idx]:
@@ -137,7 +137,7 @@ duck = 'quack'
 # quack가 끝나고 quack가 연결되어서 나오면 한 오리가 울었다고 판단
 # quack가 끝나기 전에 q가 시작되면 다른 오리의 울음
 
-while True: 
+while True:
     # 문자열 한 번 스캔 -> 거기서 quack이 여러번 나와도 한 마리의 오리가 낸 소리
     duck_idx = 0
     i = 0
@@ -198,7 +198,7 @@ duck = 'quack'
 # quack가 끝나기 전에 q가 시작되면 다른 오리의 울음
 # 녹음한 소리가 올바르지 않은 경우에는 -1을 출력 = 반드시 str_list에 남은게 \n만 있어야됨.
 
-while True: 
+while True:
     # 소리가 제대로 녹음되지 않은 경우
     if (len(str_list) - 1) % 5 != 0:
         break
@@ -233,7 +233,7 @@ else:
 
 ### 코드 설명
 
-예제를 보게 되면 qu__ackq_u__a_ck 로 나와있으면 한 마리의 오리가 운 것으로 봐야됨 <br>
+예제를 보게 되면 qu**ackq_u**a_ck 로 나와있으면 한 마리의 오리가 운 것으로 봐야됨 <br>
 
 2중 루프를 통해서 안에 있는 while 문의 경우는 한 번 문자열을 스캔하기 위한 반복문이고, 이를 계속 반복해가면서 `quack` 를 발견하기 위한 반복문이 바깥 반복문이다. <br>
 
@@ -242,3 +242,154 @@ else:
 그리고 소리가 덜 녹음된 경우, 리스트에서 \n 이외의 다른 문자열이 있는 경우는 -1을 출력(마지막 조건문) <br>
 
 근데 이런게 Implementation 인건가,,?
+
+## 백준 20164 홀수 홀릭 호석
+
+📌 [백준 20164 문제 링크](https://www.acmicpc.net/problem/20164) <br>
+
+- 숫자 개수가 1개 -> 그대로 출력
+- 숫자 개수가 2개 -> 두 수를 더함
+- 숫자 개수가 3개 이상 -> 임의의 지점에서 세 수를 나누어 더함
+- 나올 수 있는 홀수의 최댓값과 최솟값을 구하는 문제
+
+### 실패 코드
+
+- 일단 나올 수 있는 경우의 수 만큼 쪼개는 것 까지는 가능
+- 문제를 풀다 보니까 재귀로 해야되는 것 같은데 재귀로 어디서 리턴을 넣어야되는지 잘 모르겠음...
+
+```python
+# 세 개로 쪼개는 코드
+for i in range(1, len(n) - 1):
+    for j in range(i + 1, len(n)):
+        first = int(copy_n[0:i])
+        second = int(copy_n[i:j])
+        last = int(copy_n[j:len(copy_n)])
+```
+
+```python
+# 20164 홀수 홀릭 호석
+
+# 숫자 개수가 1개 -> 그대로 출력
+# 숫자 개수가 2개 -> 두 수를 더함
+# 숫자 개수가 3개 이상 -> 임의의 지점에서 세 수를 나누어 더함
+# 나올 수 있는 홀수의 최댓값과 최솟값을 구하는 문제
+
+# 514(2) -> 5 + 1 + 4 = 10(1) -> 1(1)
+
+# 쪼개진 상태로 그 값을 유지하면서 사용해야되므로 재귀를 사용해야될 것 같음.
+
+import sys
+import math
+
+
+def main_func(cnt, copy_n):
+    print("cnt:", cnt)
+    if len(copy_n) == 1:
+        if int(copy_n) % 2 != 0:
+            cnt += 1
+        print(copy_n, "리턴 전 cnt:", cnt)
+        return cnt
+    elif len(copy_n) == 2:
+        print("2인 경우", copy_n)
+        first = int(copy_n[0])
+        second = int(copy_n[1])
+        if first % 2 != 0:
+            cnt += 1
+        if second % 2 != 0:
+            cnt += 1
+        copy_n = str(first + second)
+        print(cnt)
+        main_func(cnt, copy_n)
+    else:
+        print('3이상인 경우')
+        for i in range(1, len(copy_n) - 1):
+            for j in range(i + 1, len(copy_n)):
+                first = int(copy_n[0:i])
+                second = int(copy_n[i:j])
+                last = int(copy_n[j:len(copy_n)])
+                if first % 2 != 0:
+                    cnt += 1
+                if second % 2 != 0:
+                    cnt += 1
+                if last % 2 != 0:
+                    cnt += 1
+                print(first, second, last)
+                copy_n = str(first + second + last)
+
+                main_func(cnt, copy_n)
+
+
+input = sys.stdin.readline
+n = input()
+# 문자열 입력 시 \n 제거
+n = n.replace('\n', '')
+ans = n
+cnt = 0
+cnt_list = []
+loop = math.comb(len(n) - 1, 2)  # 몇 개를 쪼갤 수 있는지
+print(loop)
+main_func(cnt, n)
+print('cnt', cnt_list)
+```
+
+### 풀이 코드
+
+```python
+# 20164 홀수 홀릭 호석
+
+# 숫자 개수가 1개 -> 그대로 출력
+# 숫자 개수가 2개 -> 두 수를 더함
+# 숫자 개수가 3개 이상 -> 임의의 지점에서 세 수를 나누어 더함
+# 나올 수 있는 홀수의 최댓값과 최솟값을 구하는 문제
+
+# 514(2) -> 5 + 1 + 4 = 10(1) -> 1(1)
+
+# 쪼개진 상태로 그 값을 유지하면서 사용해야되므로 재귀를 사용해야될 것 같음.
+
+import math
+
+
+def odd_counting(n):
+    odd_cnt = 0
+    for i in n:
+        if int(i) % 2 != 0:
+            odd_cnt += 1
+    return odd_cnt
+
+
+def main_func(n, odd_cnt):
+    global min_v, max_v
+
+    if len(n) == 1:
+        min_v = min(min_v, odd_cnt)
+        max_v = max(max_v, odd_cnt)
+    elif len(n) == 2:
+        first = int(n[0])
+        second = int(n[1])
+        temp = str(first + second)
+        main_func(temp, odd_cnt + odd_counting(temp))
+    else:
+        for i in range(1, len(n) - 1):
+            for j in range(i + 1, len(n)):
+                first = int(n[0:i])
+                second = int(n[i:j])
+                last = int(n[j:len(n)])
+                temp = str(first + second + last)
+                main_func(temp, odd_cnt + odd_counting(temp))
+
+
+n = input()
+min_v = math.inf
+max_v = 0
+
+main_func(n, odd_counting(n))
+print(min_v, max_v)
+```
+
+### 코드 설명
+
+거의 맞았는데(odd_counting 자체를 따로 빼기만 하면) 일단 재귀함수라고 해놓고는 `return` 을 해버리면 ㅋㅋㅋㅋ 거기서 그냥 함수가 끝나버림(돌아와서 다른 방식으로 3개로 분리가 안됨.) <br>
+
+- 출력하라는 것을 잘 생각해서 함수의 매개변수를 잘 구성하기,, <br>
+
+코드 자체는 문제에서 나온 규칙과 동일하므로 PASS!
