@@ -1,8 +1,10 @@
 # 2606 바이러스
 # Silver3
-# 그래프 탐색 알고리즘?
+# BFS(깊이 우선 탐색) 알고리즘
 # 풀이 날짜: 2023-07-17
 
+
+# 깊이 우선 탐색 알고리즘 정의
 def dfs(graph, v, visited):
     global cnt
     visited[v] = True
@@ -18,17 +20,14 @@ visited = [False] * (n + 1)
 com = [[] for i in range(n + 1)]
 cnt = 0
 
+# 그래프를 만드는 과정
 for i in range(k):
     a, b = map(int, input().split())
     com[a].append(b)
-    com[b].append(b)
+    com[b].append(a)
 
-print(com)
-
-print(dfs(com, 1, visited))
+dfs(com, 1, visited)
 print(cnt)
-
-
 
 
 
