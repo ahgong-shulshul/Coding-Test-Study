@@ -6,6 +6,7 @@
 
 from collections import deque
 
+
 def bfs(graph, v, visited):
     visited[v] = True
     print(v, end=" ")
@@ -35,7 +36,7 @@ for i in range(m):
     graph[a].append(b)
     graph[b].append(a)
 
-for i in range(n):
+for i in range(n + 1):
     graph[i].sort()
 
 visited = [False] * (n + 1)
