@@ -7,7 +7,7 @@
 # 가장 큰 수: 문자열에서 K로 끝날 때마다 문자열을 쪼갬
 # 가장 작은 수: 가장 큰 수에서 K를 M과 분리(붙어있는 M제외 모든 문자열을 자르기)
 
-# !답은 나오지만 백준 채점 시 Overflow Error 발생!
+
 import math
 
 num = input()
@@ -17,30 +17,41 @@ max_num = ""
 
 cnt = 0
 for i in range(len(num)):
-    temp1 = 1
+    temp = ""
     if (num[i] == "M"):
         cnt += 1
     if (num[i] == "K"):
-        temp1 = int(5 * math.pow(10, cnt))
-        max_num += str(temp1)
+        temp = str(5 * math.pow(10, cnt))
+        if ("." in temp):
+            temp = temp[0:temp.index(".")]
+        max_num += temp
         cnt = 0
 if (cnt != 0):
     max_num = max_num + "1" * cnt
 
 cnt = 0
 for i in range(len(num)):
-    temp1 = 1
+    temp = ""
     if (num[i] == "M"):
         cnt += 1
     if (num[i] == "K"):
-        temp1 = int(math.pow(10, cnt - 1))
-        if (temp1 != 0):
-            min_num = min_num + str(temp1) + "5"
+        temp = str(math.pow(10, cnt - 1))
+        if (temp == "0.1"):
+            temp = ""
+        else:
+            if ("." in temp):
+                temp = temp[0:temp.index(".")]
+        if (temp != ""):
+            min_num = min_num + temp + "5"
         else:
             min_num += "5"
         cnt = 0
 if (cnt != 0):
-    min_num += str(int(math.pow(10, cnt - 1)))
+    temp = str(math.pow(10, cnt - 1))
+    if ("." in temp):
+        temp = temp[0:temp.index(".")]
+    min_num = min_num + temp
+    # min_num = min_num[0:temp.index(".")]
 
 print(max_num)
 print(min_num)
