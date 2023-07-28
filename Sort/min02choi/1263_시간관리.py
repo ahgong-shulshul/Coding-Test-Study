@@ -3,7 +3,6 @@
 # 정렬 알고리즘
 # 풀이 날짜: 2023-07-27
 
-# 종료시간이 동일한 경우?
 
 n = int(input())
 
@@ -14,7 +13,7 @@ for i in range(n):
     load.append(temp)
 
 load.sort(key=lambda x: (-x[1], -x[0]))
-print(load)
+# print(load)
 
 time = load[0][1]
 temp = 0
