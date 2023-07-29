@@ -18,25 +18,19 @@ queue = deque(nums)
 # print(queue)
 
 ans = 0
-num1 = queue[0]
+num1 = queue.popleft()
 while queue:
-    num2 = queue[1]
-    print(num1, num2)
-    print(queue)
+    num2 = queue.popleft()
+    # print(num1, num2)
+    # print(queue)
     temp1 = num1 * num2
     temp2 = num1 + num2
     if temp1 < temp2:
-        ans += queue.popleft()
+        ans += num1
         num1 = num2
     else:
-        pop_num1 = queue.popleft()
-        pop_num2 = queue.popleft()
-        print('after pop:', pop_num1, pop_num2)
-        ans += pop_num1 * pop_num2
+        ans += temp1
         if queue:
             num1 = queue.popleft()
     print(ans)
 print(ans)
-    
-
-
