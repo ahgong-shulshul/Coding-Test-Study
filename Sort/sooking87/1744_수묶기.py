@@ -10,14 +10,19 @@ n = int(input())
 nums = []
 pos = []
 neg = []
+ans = 0
 for _ in range(n):
-    nums.append(int(input()))
+    num = int(input())
+    if num > 1:
+        pos.append(num)
+    elif num == 1:
+        ans += 1  # 1이 입력된다는 것은 1만 더하든,
+
 
 nums.sort(reverse=True)
 queue = deque(nums)
 # print(queue)
 
-ans = 0
 num1 = queue.popleft()
 while queue:
     num2 = queue.popleft()
