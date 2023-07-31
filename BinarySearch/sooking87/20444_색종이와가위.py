@@ -12,15 +12,18 @@ n, k = map(int, input().split())
 # 4번 자름 -> 9개 / 8개
 start = 1
 end = k
-count = 1
-while end >= 1:
-    end //= 2
-    count += 1
-    # print(end)
-    if n == count:
-        break
-# print('----------')
-if end == 1:
+cnt = 0
+
+while start <= end:
+    mid = (start + end) // 2  # 이 문제에서는 mid가 어떤 거를 의미할까? -> 쪼개서 2배가 되는 횟수
+    temp = cnt + mid
+    if temp >= k:
+        end = mid + 1
+    else:
+        end = mid - 1
+    cnt += 1
+    print(mid)
+if cnt == n:
     print('YES')
 else:
     print('NO')
