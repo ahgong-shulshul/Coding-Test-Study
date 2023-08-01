@@ -15,10 +15,10 @@ end = k
 cnt = 0
 
 while start <= end:
-    mid = (start + end) // 2  # 이 문제에서는 mid가 어떤 거를 의미할까? -> 쪼개서 2배가 되는 횟수
+    mid = (start + end) // 2  # 이 문제에서는 mid가 어떤 거를 의미할까? ->
     temp = cnt + mid
     if temp >= k:
-        end = mid + 1
+        start = mid + 1
     else:
         end = mid - 1
     cnt += 1
