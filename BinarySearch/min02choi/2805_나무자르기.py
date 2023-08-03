@@ -13,18 +13,15 @@ tree.sort()
 low = 1
 high = tree[-1]
 mid = 0
-# half = tree[-1] // 2
+
 while(low <= high):
     mid = (low + high) // 2
     temp = 0
     for i in range(len(tree)):
         if (tree[i] - mid > 0):
             temp += tree[i] - mid
-    # if (temp == m):
-    #     break
     if (temp < m):
         high = mid - 1
-    # elif (temp > m):
     else:
         low = mid + 1
 
