@@ -10,20 +10,28 @@ n, k = map(int, input().split())
 # 2번 자름 -> 4개
 # 3번 자름 -> 6개
 # 4번 자름 -> 9개 / 8개
-start = 1
-end = k
-cnt = 0
+start = 0
+end = n // 2
+isPossible = False
 
+# 가위질을 가로로 자른 횟수와 세로로 자른 횟수로 나뉨
+# = 조각 개수는 (row_cut + 1) * (col_cut + 1)
+
+# 거기에다가 row_cut과 col_cut은 대칭적이기 때문에 row_cut 기준으로 n // 2만큼 확인하면 됨
 while start <= end:
-    mid = (start + end) // 2  # 이 문제에서는 mid가 어떤 거를 의미할까? ->
-    temp = cnt + mid
-    if temp >= k:
-        start = mid + 1
+    row_cut = (start + end) // 2 # mid라는게 가로로 자르는 횟수로 봄
+    col_cut = n - row_cut
+
+    pieces = (row_cut + 1) * (col_cut + 1)
+    if k == pieces:
+        print('YES')
+        isPossible = True
+        break
+    if k > pieces:
+        start = row_cut + 1
     else:
-        end = mid - 1
-    cnt += 1
-    print(mid)
-if cnt == n:
-    print('YES')
-else:
+        end = row_cut - 1
+    print(row_cut, col_cut)
+
+if not isPossible:
     print('NO')
