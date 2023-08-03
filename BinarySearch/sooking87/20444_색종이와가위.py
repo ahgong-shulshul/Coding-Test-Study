@@ -19,7 +19,7 @@ isPossible = False
 
 # 거기에다가 row_cut과 col_cut은 대칭적이기 때문에 row_cut 기준으로 n // 2만큼 확인하면 됨
 while start <= end:
-    row_cut = (start + end) // 2 # mid라는게 가로로 자르는 횟수로 봄
+    row_cut = (start + end) // 2  # mid라는게 가로로 자르는 횟수로 봄
     col_cut = n - row_cut
 
     pieces = (row_cut + 1) * (col_cut + 1)
