@@ -8,15 +8,16 @@ n, c = map(int, input().split())
 home = []
 for _ in range(n):
     home.append(int(input()))
-
+home.sort()
 # 1 2 4 8 9
-pos = [0 for _ in range(max(home) + 1)]
-for i in range(n):
-    pos[home[i]] = 1
-print(pos)
+
 start = 1
-end = max(home)
+end = max(home) - min(home)
+isPossible = False
+
 while start <= end:
     length = (start + end) // 2
-    # 첫 번째 집과 마지막 집에 각각 한 개씩 두었다고 가정
     put = min(home) + length
+    # 첫 번째 집과 마지막 집에 각각 한 개씩 두었다고 가정
+    for i in range(c - 1):
+        print('-')
