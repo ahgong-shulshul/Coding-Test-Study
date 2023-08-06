@@ -21,3 +21,7 @@ def binary_search(target, data):
 
     return None     # 탐색 실패
 ~~~
+
+
+### 문제에 대한 풀이방법 정리
+https://min02choi.github.io/categories/coding-test/baekjoon
