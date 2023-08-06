@@ -20,11 +20,10 @@ while start <= end:
     get = sum([(t - mid) if t - mid > 0 else 0 for t in height])
 
     # print(get, m, '자른 길이:', mid)
-    if get == m:
-        break
-    if get < m:
-        end = mid - 1
-    else :
+    if get >= m:
         start = mid + 1
+        
+    elif get < m:
+        end = mid - 1
 
 print(end)
