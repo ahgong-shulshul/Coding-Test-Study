@@ -4,31 +4,21 @@
 
 import sys
 
-
-def dp(cnt, col, row):
-    print('n:', n)
-    if row >= 0 and row < n:  # 오른쪽으로 이동 = 열 이동
-        cnt[col][board[col][row]] += 1
-        row += board[col][row]
-        print('오른쪽으로 이동', cnt, col, row)
-        return dp(cnt, col, row)
-
-    if col >= 0 and col < n:  # 아래로 이동 = 행 이동
-        cnt[board[col][row]][row] += 1
-        col += board[col][row]
-        print('아래쪽으로 이동', cnt, col, row)
-        return dp(cnt, col, row)
-
-    if board[col][row] == 0:
-        cnt[col][row] += 1
-
-        print(cnt, col, row)
-
-
 input = sys.stdin.readline
 n = int(input())
 board = [[int(i) for i in input().split()] for _ in range(n)]
 cnt = [[0 for i in range(n)] for _ in range(n)]
-col = 0
-row = 0
-dp(cnt, col, row)
+cnt[0][0] = 1  # 초기 값
+
+for col in range(n):
+    for row in range(n):
+        if col == n - 1 and row == n - 1:
+            print(cnt[col][row])
+            break
+        # 오른쪽으로 이동
+        if row + board[col][row] < n:
+            cnt[col][row + board[col][row]] += cnt[col][row]
+
+        # 아래쪽으로 이동
+        if col + board[col][row] < n:
+            cnt[col + board[col][row]][row] += cnt[col][row]
