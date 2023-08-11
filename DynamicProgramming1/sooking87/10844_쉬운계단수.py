@@ -6,23 +6,21 @@ import sys
 
 input = sys.stdin.readline
 n = int(input())  # n 자리수
-# 10, 12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98
-cnt = 0
-num = [0 for i in range(10**n + 1)]  # 계단은 1부터 시작
-# n == 1: 10**1 전까지
-# n == 2: 10**2 전까지
-# print(num)
-is_possible = True
-for i in range(10**(n - 1), 10**n):  # 딱 n자리 수까지만
-    str_num = str(i)
 
-    for j in range(1, n):
-        if abs(int(str_num[j - 1]) - int(str_num[j])) != 1:
-            is_possible = False
-            break
-        is_possible = True
-    if is_possible:
-        print(i)
-        cnt += 1
+# dp 테이블 초기화,,
+dp = [[0] * 10 for _ in range(n + 1)]
 
-print(cnt % 1000000000)
+# 1의 자릿수의 경우의 수 초기화
+for i in range(1, 10):
+    dp[1][i] = 1
+
+# 나머지 자릿수의 경우의 수 탐색
+for i in range(2, n + 1):
+    for j in range(10):
+        if j == 0:
+            dp[i][j] = dp[i-1][1]
+        elif 1 <= j <= 8:
+            dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1]
+        else:
+            dp[i][j] = dp[i-1][8]
+print(sum(dp[n]) % 1000000000)
