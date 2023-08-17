@@ -8,7 +8,8 @@ input = sys.stdin.readline
 n, k = map(int, input().split())
 value = [int(input()) for i in range(n)]
 
-dp = [100000] * (k+1)
+dp = [100001] * (100000+1)
+# print(dp)
 for i in value:
     dp[i] = 1
 
@@ -16,10 +17,10 @@ for i in range(min(value)+1, k+1):
     temp = []
     temp.append(dp[i])
     for j in value:
-        if (i-j >= 0) and (dp[i-j] < 100000):
+        if (i-j >= 0) and (dp[i-j] <= 100001):
             temp.append(dp[i-j] + 1)
             # print(temp)
     dp[i] = min(temp)
     # print(dp)
 
-print(dp[k] if dp[k] < 100000 else -1)
+print(dp[k] if dp[k] < 100001 else -1)
