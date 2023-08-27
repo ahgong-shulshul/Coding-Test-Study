@@ -1,3 +1,16 @@
-# 20437 문자열 게임 2
+# 9342 염색체
 
-# 알파벳 소문자로 이루어진 문자열 w가 주어짐 -> 양의 정수 K가 주어진다 -> 어떤 문자를 정확히 k개를 포함하는 가장 짧은 연속 문자열의 길이를 구한다.
+# A가 하나 또는 그 이상, F가 하나 또는 그 이상, C가 하나 또는 그 이상, {A, B, C, D, E, F} 중 0개 또는 1개가 있으며, 더 이상의 문자는 없어야 한다.
+
+import sys
+import re
+
+input = sys.stdin.readline
+n = int(input())
+# ^ 해당 패턴으로 시작
+# ? 해당 패턴을 0번 또는 1번
+# $ 해당 패턴으로 끝
+# + 해당 패턴이 하나 이상
+comp = re.compile('^[A-F]?A+F+C+[A-F]?$')
+for _ in range(n):
+    print('Good' if comp.match(input()) == None else 'Infected!')
