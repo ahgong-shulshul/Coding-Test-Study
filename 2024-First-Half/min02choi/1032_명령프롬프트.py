@@ -3,6 +3,7 @@
 # 문자열
 # Solved
 
+
 n = int(input())
 words = []
 for i in range(n):
